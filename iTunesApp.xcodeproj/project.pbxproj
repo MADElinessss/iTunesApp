@@ -29,6 +29,7 @@
 		C1D628692BC1989400EEB771 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628682BC1989400EEB771 /* ViewModelType.swift */; };
 		C1D6286B2BC19BF000EEB771 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6286A2BC19BF000EEB771 /* BaseTableViewCell.swift */; };
 		C1D6286E2BC19BFE00EEB771 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6286D2BC19BFE00EEB771 /* SearchTableViewCell.swift */; };
+		C1D628702BC1A50200EEB771 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6286F2BC1A50100EEB771 /* SearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		C1D628682BC1989400EEB771 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		C1D6286A2BC19BF000EEB771 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C1D6286D2BC19BFE00EEB771 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		C1D6286F2BC1A50100EEB771 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D6285C2BC1931000EEB771 /* APIManager.swift */,
+				C1D6286F2BC1A50100EEB771 /* SearchResults.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				C1D628332BC18EEA00EEB771 /* AppDelegate.swift in Sources */,
 				C1D6286B2BC19BF000EEB771 /* BaseTableViewCell.swift in Sources */,
 				C1D628592BC1909700EEB771 /* SearchViewController.swift in Sources */,
+				C1D628702BC1A50200EEB771 /* SearchResults.swift in Sources */,
 				C1D6285F2BC193AA00EEB771 /* BaseViewController.swift in Sources */,
 				C1D628352BC18EEA00EEB771 /* SceneDelegate.swift in Sources */,
 				C1D6286E2BC19BFE00EEB771 /* SearchTableViewCell.swift in Sources */,

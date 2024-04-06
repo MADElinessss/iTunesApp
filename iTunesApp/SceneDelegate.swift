@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         vc2.tabBarItem.imageInsets = UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 0)
         vc2.tabBarItem.tag = 1
         
-        vc3.tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack"), selectedImage: UIImage(systemName: "square.stack.fill"))
+        vc3.tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack.fill"), selectedImage: UIImage(systemName: "square.stack.fill"))
         vc3.tabBarItem.tag = 2
         
         vc4.tabBarItem = UITabBarItem(title: "아케이드", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star.fill"))
