@@ -60,17 +60,40 @@ class SearchTableViewCell: BaseTableViewCell {
         return label
     }()
     
+    let genreLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let screenshotsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .fill
+        return stackView
+    }()
+    
     var disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
+        configureScreenshots()
     }
      
     // MARK: Cell 재사용 막기 ⭐️
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        appIconImageView.image = nil // 또는 기본 이미지로 설정
+        // 스크린샷 이미지 뷰들도 초기화
+        screenshotsStackView.arrangedSubviews.forEach { imageView in
+            if let imageView = imageView as? UIImageView {
+                imageView.image = nil
+            }
+        }
         disposeBag = DisposeBag()
     }
     
@@ -85,6 +108,7 @@ class SearchTableViewCell: BaseTableViewCell {
         contentView.addSubview(starImage)
         contentView.addSubview(ratingLabel)
         contentView.addSubview(artistLabel)
+        contentView.addSubview(genreLabel)
         
         appIconImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
@@ -119,6 +143,31 @@ class SearchTableViewCell: BaseTableViewCell {
         artistLabel.snp.makeConstraints {
             $0.top.equalTo(appIconImageView.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
+        }
+        
+        genreLabel.snp.makeConstraints {
+            $0.top.equalTo(appIconImageView.snp.bottom).offset(8)
+            $0.trailing.equalTo(-20)
+        }
+    }
+    
+    private func configureScreenshots() {
+        for _ in 0..<3 {
+            let screenshotImageView = UIImageView()
+            screenshotImageView.contentMode = .scaleAspectFill
+            screenshotImageView.backgroundColor = .white
+            screenshotImageView.clipsToBounds = true
+            screenshotImageView.layer.cornerRadius = 10
+            screenshotsStackView.addArrangedSubview(screenshotImageView)
+        }
+        
+        contentView.addSubview(screenshotsStackView)
+    
+        screenshotsStackView.snp.makeConstraints { make in
+            make.top.equalTo(starImage.snp.bottom).offset(12)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(200)
         }
     }
 }

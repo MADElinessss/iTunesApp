@@ -40,7 +40,15 @@ class SearchViewController: BaseViewController {
                 cell.artistLabel.text = "\(element.artistName)"
                 let rating = DateFormatterManager.shared.string(from: element.averageUserRating ?? 0.0)
                 cell.ratingLabel.text = rating
+                if let genre = element.genres.first {
+                    cell.genreLabel.text = "\(genre)"
+                }
                 
+                element.screenshotUrls.prefix(3).enumerated().forEach { index, screenshotUrl in
+                    if let url = URL(string: screenshotUrl), let screenshotImageView = cell.screenshotsStackView.arrangedSubviews[index] as? UIImageView {
+                        screenshotImageView.kf.setImage(with: url)
+                    }
+                }
             }
             .disposed(by: disposeBag)
         
