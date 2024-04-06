@@ -22,7 +22,7 @@ class SearchView: BaseView {
        let view = UITableView()
         view.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         view.backgroundColor = .white
-        view.rowHeight = 180
+        view.rowHeight = 250
         view.separatorStyle = .none
        return view
      }()

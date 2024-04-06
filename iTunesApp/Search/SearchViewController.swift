@@ -37,6 +37,10 @@ class SearchViewController: BaseViewController {
                 cell.appNameLabel.text = "\(element.trackName)"
                 let url = URL(string: element.artworkUrl100)
                 cell.appIconImageView.kf.setImage(with: url)
+                cell.artistLabel.text = "\(element.artistName)"
+                let rating = DateFormatterManager.shared.string(from: element.averageUserRating ?? 0.0)
+                cell.ratingLabel.text = rating
+                
             }
             .disposed(by: disposeBag)
         

@@ -15,7 +15,7 @@ class APIManager {
     
     func fetchiTunesSearchResults(term: String) -> Observable<[AppInfo]> {
         return Observable<[AppInfo]>.create { observer in
-            let url = "https://itunes.apple.com/search?term=\(term)&entity=software&limit=20"
+            let url = "https://itunes.apple.com/search?term=\(term)&entity=software&limit=20&lang=ko-kr&country=kr"
             AF.request(url, method: .get).responseDecodable(of: SearchResults.self) { response in
                 switch response.result {
                 case .success(let success):

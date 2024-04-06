@@ -37,6 +37,29 @@ class SearchTableViewCell: BaseTableViewCell {
         return button
     }()
     
+    let starImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.tintColor = .systemBlue
+        imageView.image = UIImage(systemName: "star.fill")
+        return imageView
+    }()
+    
+    let ratingLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let artistLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .gray
+        return label
+    }()
+    
     var disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,24 +82,43 @@ class SearchTableViewCell: BaseTableViewCell {
         contentView.addSubview(appNameLabel)
         contentView.addSubview(appIconImageView)
         contentView.addSubview(downloadButton)
+        contentView.addSubview(starImage)
+        contentView.addSubview(ratingLabel)
+        contentView.addSubview(artistLabel)
         
         appIconImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().inset(8)
             $0.leading.equalTo(20)
             $0.size.equalTo(60)
         }
         
         appNameLabel.snp.makeConstraints {
-            $0.centerY.equalTo(appIconImageView)
-            $0.leading.equalTo(appIconImageView.snp.trailing).offset(8)
-            $0.trailing.equalTo(downloadButton.snp.leading).offset(-8)
+            $0.top.equalToSuperview().inset(28)
+            $0.leading.equalTo(appIconImageView.snp.trailing).offset(12)
+            $0.trailing.equalTo(downloadButton.snp.leading).offset(-12)
         }
         
         downloadButton.snp.makeConstraints {
-            $0.centerY.equalTo(appIconImageView)
+            $0.top.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(32)
             $0.width.equalTo(72)
+        }
+        
+        starImage.snp.makeConstraints {
+            $0.top.equalTo(appIconImageView.snp.bottom).offset(8)
+            $0.leading.equalTo(20)
+            $0.size.equalTo(20)
+        }
+        
+        ratingLabel.snp.makeConstraints {
+            $0.top.equalTo(appIconImageView.snp.bottom).offset(12)
+            $0.leading.equalTo(appIconImageView.snp.trailing).inset(30)
+        }
+        
+        artistLabel.snp.makeConstraints {
+            $0.top.equalTo(appIconImageView.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
         }
     }
 }
