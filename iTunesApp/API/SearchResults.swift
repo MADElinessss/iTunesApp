@@ -19,7 +19,7 @@ struct AppInfo: Decodable {
     let version: String // 버전
     let releaseNotes: String? // 버전 정보 설명
     let description: String // 앱 설명
-    let formattedPrice: String // 앱 가격
+    let formattedPrice: String? // 앱 가격
     let averageUserRating: Double? // 평점
     let genres: [String] // 장르
 }
