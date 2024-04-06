@@ -25,6 +25,8 @@
 		C1D6285D2BC1931000EEB771 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6285C2BC1931000EEB771 /* APIManager.swift */; };
 		C1D6285F2BC193AA00EEB771 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6285E2BC193AA00EEB771 /* BaseViewController.swift */; };
 		C1D628622BC1945000EEB771 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628612BC1945000EEB771 /* BaseView.swift */; };
+		C1D628662BC195F300EEB771 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628652BC195F300EEB771 /* SearchView.swift */; };
+		C1D628692BC1989400EEB771 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628682BC1989400EEB771 /* ViewModelType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		C1D6285C2BC1931000EEB771 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C1D6285E2BC193AA00EEB771 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C1D628612BC1945000EEB771 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C1D628652BC195F300EEB771 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C1D628682BC1989400EEB771 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		C1D628312BC18EEA00EEB771 /* iTunesApp */ = {
 			isa = PBXGroup;
 			children = (
+				C1D628672BC1986A00EEB771 /* Protocol */,
 				C1D628642BC194F000EEB771 /* API */,
 				C1D628632BC194B000EEB771 /* Search */,
 				C1D628602BC1944000EEB771 /* Base */,
@@ -109,6 +114,7 @@
 			children = (
 				C1D628582BC1909700EEB771 /* SearchViewController.swift */,
 				C1D6285A2BC192F200EEB771 /* SearchViewModel.swift */,
+				C1D628652BC195F300EEB771 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -119,6 +125,14 @@
 				C1D6285C2BC1931000EEB771 /* APIManager.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		C1D628672BC1986A00EEB771 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C1D628682BC1989400EEB771 /* ViewModelType.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,12 +222,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1D6285D2BC1931000EEB771 /* APIManager.swift in Sources */,
+				C1D628662BC195F300EEB771 /* SearchView.swift in Sources */,
 				C1D628372BC18EEA00EEB771 /* ViewController.swift in Sources */,
 				C1D6285B2BC192F200EEB771 /* SearchViewModel.swift in Sources */,
 				C1D628332BC18EEA00EEB771 /* AppDelegate.swift in Sources */,
 				C1D628592BC1909700EEB771 /* SearchViewController.swift in Sources */,
 				C1D6285F2BC193AA00EEB771 /* BaseViewController.swift in Sources */,
 				C1D628352BC18EEA00EEB771 /* SceneDelegate.swift in Sources */,
+				C1D628692BC1989400EEB771 /* ViewModelType.swift in Sources */,
 				C1D628622BC1945000EEB771 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.backgroundColor = .lightGray
+        tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.tabBar.tintColor = .systemBlue
-        tabBarController.tabBar.unselectedItemTintColor = .gray
+        tabBarController.tabBar.unselectedItemTintColor = .lightGray
         
         let vc1 = ViewController()
         let vc2 = ViewController()
