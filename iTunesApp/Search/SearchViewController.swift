@@ -5,6 +5,7 @@
 //  Created by Madeline on 4/6/24.
 //
 
+import Kingfisher
 import SnapKit
 import RxCocoa
 import RxSwift
@@ -13,6 +14,7 @@ import UIKit
 class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
+    let viewModel = SearchViewModel()
     
     override func loadView() {
         view = mainView
@@ -21,36 +23,32 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.titleView = mainView.searchBar
-        mainView.searchBar.delegate = self
+        configure()
+        
     }
     
     override func bind() {
         
+        let input = SearchViewModel.Input(searchButtonTapped: mainView.searchBar.rx.searchButtonClicked, searchText: mainView.searchBar.rx.text.orEmpty)
+        
+        let output = viewModel.transform(input)
+        output.apps
+            .bind(to: mainView.tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
+                cell.appNameLabel.text = "\(element.trackName)"
+                let url = URL(string: element.artworkUrl100)
+                cell.appIconImageView.kf.setImage(with: url)
+            }
+            .disposed(by: disposeBag)
         
     }
-}
-
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        fetchApps(searchTerm: searchBar.text!)
-    }
-}
-
-extension SearchViewController {
-    // temporary
-    private func fetchApps(searchTerm: String) {
-        APIManager.fetchiTunesSearchResults(term: searchTerm) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let apps):
-                    for app in apps {
-                        print("App Name: \(app.trackName), Developer: \(app.artistName)")
-                    }
-                case .failure(let error):
-                    print("Error fetching apps: \(error)")
-                }
-            }
+    
+    func configure() {
+        navigationItem.titleView = mainView.searchBar
+        
+        mainView.tableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
     }
 }

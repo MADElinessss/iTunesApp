@@ -18,7 +18,7 @@ class SearchView: BaseView {
         return view
     }()
     
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
        let view = UITableView()
         view.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         view.backgroundColor = .white
@@ -33,8 +33,6 @@ class SearchView: BaseView {
     }
     
     override func configureView() {
-        
-        
         
     }
     
