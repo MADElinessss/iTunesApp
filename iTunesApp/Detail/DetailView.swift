@@ -32,11 +32,6 @@ class DetailView: BaseView {
     
     override func configureView() {
         addSubview(scrollView)
-//        
-//        scrollView.addSubview(appNameView)
-//        scrollView.addSubview(appVersionView)
-//        scrollView.addSubview(appImageView)
-//        scrollView.addSubview(appDescriptionView)
         
         scrollView.addSubview(contentView)
         
@@ -66,13 +61,13 @@ class DetailView: BaseView {
         appVersionView.snp.makeConstraints { make in
             make.top.equalTo(appNameView.snp.bottom)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height * 0.3)
+            //make.height.equalTo(UIScreen.main.bounds.height * 0.3)
         }
         
         appImageView.snp.makeConstraints { make in
             make.top.equalTo(appVersionView.snp.bottom)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height * 0.45)
+            make.height.equalTo(UIScreen.main.bounds.height * 0.7)
         }
         
         appDescriptionView.snp.makeConstraints { make in

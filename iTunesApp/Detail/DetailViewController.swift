@@ -38,6 +38,8 @@ class DetailViewController: BaseViewController {
             mainView.appVersionView.versionLabel.text = "버전 " + app.version
             mainView.appVersionView.descriptionLabel.text = app.releaseNotes
             
+            let screenshotURLs = app.screenshotUrls.compactMap { URL(string: $0) }
+            mainView.appImageView.imageURLs = screenshotURLs
             mainView.appDescriptionView.descriptionLabel.text = app.description
         }
     }
