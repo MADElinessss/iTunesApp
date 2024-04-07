@@ -61,6 +61,7 @@ class AppNameView: BaseView {
         appNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)
             $0.leading.equalTo(appIconImageView.snp.trailing).offset(12)
+            $0.trailing.equalToSuperview().inset(20)
         }
         
         artistLabel.snp.makeConstraints {

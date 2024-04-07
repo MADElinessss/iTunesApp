@@ -24,7 +24,7 @@ class AppDescriptionView: BaseView {
     override func configureHierarchy() {
         descriptionLabel.snp.makeConstraints { make in
             make.top.leading.bottom.equalToSuperview().inset(20)
-            make.trailing.equalToSuperview().inset(-20)
+            make.trailing.equalToSuperview().inset(20)
         }
     }
 }

@@ -62,16 +62,19 @@ class DetailView: BaseView {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.height * 0.15)
         }
+        
         appVersionView.snp.makeConstraints { make in
             make.top.equalTo(appNameView.snp.bottom)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.height * 0.3)
         }
+        
         appImageView.snp.makeConstraints { make in
             make.top.equalTo(appVersionView.snp.bottom)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.height * 0.45)
         }
+        
         appDescriptionView.snp.makeConstraints { make in
             make.top.equalTo(appImageView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()

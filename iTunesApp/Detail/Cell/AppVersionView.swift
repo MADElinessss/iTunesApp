@@ -52,7 +52,7 @@ class AppVersionView: BaseView {
         
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(versionLabel.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
     }
 }
