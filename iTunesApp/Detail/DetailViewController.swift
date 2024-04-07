@@ -25,9 +25,7 @@ class DetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configure()
-
     }
     
     private func configure() {
@@ -40,14 +38,12 @@ class DetailViewController: BaseViewController {
             mainView.appVersionView.versionLabel.text = "버전 " + app.version
             mainView.appVersionView.descriptionLabel.text = app.releaseNotes
             
-            
+            mainView.appDescriptionView.descriptionLabel.text = app.description
         }
-        
-        
     }
-    
+
     override func bind() {
-        
+       
     }
     
 }

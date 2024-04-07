@@ -16,22 +16,34 @@ class DetailView: BaseView {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.showsHorizontalScrollIndicator = false
-        
+        return view
+    }()
+    
+    let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let appNameView = AppNameView()
     let appVersionView = AppVersionView()
     let appImageView = AppImageView()
-    let appDescriptionView = UIView()
+    let appDescriptionView = AppDescriptionView()
     
     override func configureView() {
         addSubview(scrollView)
+//        
+//        scrollView.addSubview(appNameView)
+//        scrollView.addSubview(appVersionView)
+//        scrollView.addSubview(appImageView)
+//        scrollView.addSubview(appDescriptionView)
         
-        scrollView.addSubview(appNameView)
-        scrollView.addSubview(appVersionView)
-        scrollView.addSubview(appImageView)
-        scrollView.addSubview(appDescriptionView)
+        scrollView.addSubview(contentView)
+        
+        contentView.addSubview(appNameView)
+        contentView.addSubview(appVersionView)
+        contentView.addSubview(appImageView)
+        contentView.addSubview(appDescriptionView)
         
     }
     
@@ -39,6 +51,12 @@ class DetailView: BaseView {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(scrollView)
+        }
+        
         appNameView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
