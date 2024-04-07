@@ -31,6 +31,13 @@
 		C1D6286E2BC19BFE00EEB771 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6286D2BC19BFE00EEB771 /* SearchTableViewCell.swift */; };
 		C1D628702BC1A50200EEB771 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6286F2BC1A50100EEB771 /* SearchResults.swift */; };
 		C1D628732BC1B98D00EEB771 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628722BC1B98D00EEB771 /* DateFormatterManager.swift */; };
+		C1D628762BC272EB00EEB771 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628752BC272EB00EEB771 /* DetailViewController.swift */; };
+		C1D628782BC2734300EEB771 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628772BC2734300EEB771 /* DetailView.swift */; };
+		C1D6287D2BC274F900EEB771 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6287C2BC274F900EEB771 /* DetailViewModel.swift */; };
+		C1D6287F2BC27D1400EEB771 /* AppNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D6287E2BC27D1400EEB771 /* AppNameView.swift */; };
+		C1D628812BC27F8100EEB771 /* AppVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628802BC27F8100EEB771 /* AppVersionView.swift */; };
+		C1D628832BC28C5800EEB771 /* AppImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628822BC28C5800EEB771 /* AppImageView.swift */; };
+		C1D628852BC2903E00EEB771 /* AppDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628842BC2903E00EEB771 /* AppDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +61,13 @@
 		C1D6286D2BC19BFE00EEB771 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C1D6286F2BC1A50100EEB771 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		C1D628722BC1B98D00EEB771 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		C1D628752BC272EB00EEB771 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C1D628772BC2734300EEB771 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C1D6287C2BC274F900EEB771 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		C1D6287E2BC27D1400EEB771 /* AppNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNameView.swift; sourceTree = "<group>"; };
+		C1D628802BC27F8100EEB771 /* AppVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionView.swift; sourceTree = "<group>"; };
+		C1D628822BC28C5800EEB771 /* AppImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageView.swift; sourceTree = "<group>"; };
+		C1D628842BC2903E00EEB771 /* AppDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +106,10 @@
 		C1D628312BC18EEA00EEB771 /* iTunesApp */ = {
 			isa = PBXGroup;
 			children = (
-				C1D628712BC1B98600EEB771 /* Manager */,
-				C1D628672BC1986A00EEB771 /* Protocol */,
 				C1D628642BC194F000EEB771 /* API */,
+				C1D628672BC1986A00EEB771 /* Protocol */,
+				C1D628712BC1B98600EEB771 /* Manager */,
+				C1D628742BC272D700EEB771 /* Detail */,
 				C1D628632BC194B000EEB771 /* Search */,
 				C1D628602BC1944000EEB771 /* Base */,
 				C1D628322BC18EEA00EEB771 /* AppDelegate.swift */,
@@ -161,6 +176,28 @@
 				C1D628722BC1B98D00EEB771 /* DateFormatterManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		C1D628742BC272D700EEB771 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C1D628792BC273D900EEB771 /* Cell */,
+				C1D628752BC272EB00EEB771 /* DetailViewController.swift */,
+				C1D628772BC2734300EEB771 /* DetailView.swift */,
+				C1D6287C2BC274F900EEB771 /* DetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C1D628792BC273D900EEB771 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C1D6287E2BC27D1400EEB771 /* AppNameView.swift */,
+				C1D628802BC27F8100EEB771 /* AppVersionView.swift */,
+				C1D628822BC28C5800EEB771 /* AppImageView.swift */,
+				C1D628842BC2903E00EEB771 /* AppDescriptionView.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,15 +289,22 @@
 				C1D6285D2BC1931000EEB771 /* APIManager.swift in Sources */,
 				C1D628662BC195F300EEB771 /* SearchView.swift in Sources */,
 				C1D628372BC18EEA00EEB771 /* ViewController.swift in Sources */,
+				C1D628852BC2903E00EEB771 /* AppDescriptionView.swift in Sources */,
 				C1D6285B2BC192F200EEB771 /* SearchViewModel.swift in Sources */,
 				C1D628332BC18EEA00EEB771 /* AppDelegate.swift in Sources */,
+				C1D628812BC27F8100EEB771 /* AppVersionView.swift in Sources */,
 				C1D6286B2BC19BF000EEB771 /* BaseTableViewCell.swift in Sources */,
+				C1D6287F2BC27D1400EEB771 /* AppNameView.swift in Sources */,
 				C1D628732BC1B98D00EEB771 /* DateFormatterManager.swift in Sources */,
 				C1D628592BC1909700EEB771 /* SearchViewController.swift in Sources */,
 				C1D628702BC1A50200EEB771 /* SearchResults.swift in Sources */,
+				C1D628782BC2734300EEB771 /* DetailView.swift in Sources */,
 				C1D6285F2BC193AA00EEB771 /* BaseViewController.swift in Sources */,
 				C1D628352BC18EEA00EEB771 /* SceneDelegate.swift in Sources */,
+				C1D6287D2BC274F900EEB771 /* DetailViewModel.swift in Sources */,
 				C1D6286E2BC19BFE00EEB771 /* SearchTableViewCell.swift in Sources */,
+				C1D628832BC28C5800EEB771 /* AppImageView.swift in Sources */,
+				C1D628762BC272EB00EEB771 /* DetailViewController.swift in Sources */,
 				C1D628692BC1989400EEB771 /* ViewModelType.swift in Sources */,
 				C1D628622BC1945000EEB771 /* BaseView.swift in Sources */,
 			);

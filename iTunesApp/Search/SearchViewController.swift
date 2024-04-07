@@ -51,7 +51,20 @@ class SearchViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
+
+        Observable.zip(
+            mainView.tableView.rx.modelSelected(
+                AppInfo.self
+            ),
+            mainView.tableView.rx.itemSelected
+        )
+        .map { $0.0 }
+        .subscribe(with: self) { owner, app in
+            let vc = DetailViewController()
+            vc.appInfo = app
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        .disposed(by: disposeBag)
     }
     
     func configure() {

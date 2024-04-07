@@ -34,7 +34,6 @@ class SearchViewModel: ViewModelType {
             }
             .subscribe(with: self) { owner, term in
                 appList.onNext(term)
-                print("🍔", appList)
             }
             .disposed(by: disposeBag)
         
