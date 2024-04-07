@@ -137,7 +137,7 @@ class SearchTableViewCell: BaseTableViewCell {
         
         ratingLabel.snp.makeConstraints {
             $0.top.equalTo(appIconImageView.snp.bottom).offset(12)
-            $0.leading.equalTo(appIconImageView.snp.trailing).inset(30)
+            $0.leading.equalTo(appIconImageView.snp.trailing).inset(35)
         }
         
         artistLabel.snp.makeConstraints {
