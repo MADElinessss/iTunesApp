@@ -21,22 +21,33 @@ class SearchViewModel: ViewModelType {
         let apps: PublishSubject<[AppInfo]>
     }
     
+    let appList = PublishSubject<[AppInfo]>()
+    
     func transform(_ input: Input) -> Output {
-        
-        let appList = PublishSubject<[AppInfo]>()
-        
         input.searchButtonTapped
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(input.searchText)
             .distinctUntilChanged() // 중복 막아
-            .flatMap {
-                APIManager.shared.fetchiTunesSearchResults(term: $0)
-            }
-            .subscribe(with: self) { owner, term in
-                appList.onNext(term)
-            }
+            .subscribe(onNext: { [weak self] searchTerm in
+                
+                var searchTerms = UserDefaultsManager.shared.getSearchTerms()
+                searchTerms.insert(searchTerm, at: 0)
+                UserDefaultsManager.shared.saveSearchTerms(searchTerms)
+                
+                self?.search(for: searchTerm)
+            })
             .disposed(by: disposeBag)
         
         return Output(apps: appList)
     }
+    
+    func search(for searchTerm: String) {
+        
+        APIManager.shared.fetchiTunesSearchResults(term: searchTerm)
+            .subscribe(onNext: { [weak self] apps in
+                self?.appList.onNext(apps)
+            })
+            .disposed(by: disposeBag)
+    }
 }
+

@@ -15,6 +15,7 @@ class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
     let viewModel = SearchViewModel()
+    var hidesBackButton: Bool = false
     
     override func loadView() {
         view = mainView
@@ -25,6 +26,15 @@ class SearchViewController: BaseViewController {
         
         configure()
         
+        if hidesBackButton {
+            navigationItem.hidesBackButton = true
+        }
+        
+    }
+    
+    func setSearchTerm(_ searchTerm: String) {
+        mainView.searchBar.text = searchTerm
+        viewModel.search(for: searchTerm) // ViewModel을 통해 검색 실행
     }
     
     override func bind() {
