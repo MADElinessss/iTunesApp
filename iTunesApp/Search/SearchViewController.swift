@@ -11,10 +11,11 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class SearchViewController: BaseViewController {
+class SearchViewController: BaseViewController, UISearchResultsUpdating {
     
     let mainView = SearchView()
     let viewModel = SearchViewModel()
+    var searchController = UISearchController(searchResultsController: nil)
     var hidesBackButton: Bool = false
     
     override func loadView() {
@@ -25,23 +26,39 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         configure()
+        configureNavigationBar()
         
         if hidesBackButton {
             navigationItem.hidesBackButton = true
         }
         
+        setupSearchController()
+        
     }
     
-    func setSearchTerm(_ searchTerm: String) {
-        mainView.searchBar.text = searchTerm
-        viewModel.search(for: searchTerm) // ViewModel을 통해 검색 실행
+    private func configureNavigationBar() {
+        title = "검색"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
+        navigationItem.searchController = searchController
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
     }
     
     override func bind() {
         
-        let input = SearchViewModel.Input(searchButtonTapped: mainView.searchBar.rx.searchButtonClicked, searchText: mainView.searchBar.rx.text.orEmpty)
+        let input = SearchViewModel.Input(
+            searchButtonTapped: searchController.searchBar.rx.searchButtonClicked,
+            searchText: searchController.searchBar.rx.text.orEmpty
+        )
         
         let output = viewModel.transform(input)
+        
         output.apps
             .bind(to: mainView.tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
                 cell.appNameLabel.text = "\(element.trackName)"
@@ -77,9 +94,11 @@ class SearchViewController: BaseViewController {
         .disposed(by: disposeBag)
     }
     
-    func configure() {
-        navigationItem.titleView = mainView.searchBar
+    func updateSearchResults(for searchController: UISearchController) {
         
+    }
+    
+    func configure() {
         mainView.tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)

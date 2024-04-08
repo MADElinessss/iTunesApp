@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc2 = ViewController()
         let vc3 = ViewController()
         let vc4 = ViewController()
-        let vc5 = SearchTitleViewViewController()
+        let vc5 = SearchViewController()
     
         vc1.tabBarItem = UITabBarItem(title: "투데이", image: UIImage(systemName: "book"), selectedImage: UIImage(named: "book.fill"))
         vc1.tabBarItem.imageInsets = UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 0)

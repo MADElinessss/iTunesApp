@@ -39,7 +39,6 @@
 		C1D628832BC28C5800EEB771 /* AppImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628822BC28C5800EEB771 /* AppImageView.swift */; };
 		C1D628852BC2903E00EEB771 /* AppDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628842BC2903E00EEB771 /* AppDescriptionView.swift */; };
 		C1D628872BC3042D00EEB771 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628862BC3042D00EEB771 /* UserDefaultsManager.swift */; };
-		C1D628892BC3110D00EEB771 /* SearchTitleViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D628882BC3110D00EEB771 /* SearchTitleViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +70,6 @@
 		C1D628822BC28C5800EEB771 /* AppImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageView.swift; sourceTree = "<group>"; };
 		C1D628842BC2903E00EEB771 /* AppDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionView.swift; sourceTree = "<group>"; };
 		C1D628862BC3042D00EEB771 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		C1D628882BC3110D00EEB771 /* SearchTitleViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTitleViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +143,6 @@
 				C1D628582BC1909700EEB771 /* SearchViewController.swift */,
 				C1D6285A2BC192F200EEB771 /* SearchViewModel.swift */,
 				C1D628652BC195F300EEB771 /* SearchView.swift */,
-				C1D628882BC3110D00EEB771 /* SearchTitleViewViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 				C1D628732BC1B98D00EEB771 /* DateFormatterManager.swift in Sources */,
 				C1D628592BC1909700EEB771 /* SearchViewController.swift in Sources */,
 				C1D628702BC1A50200EEB771 /* SearchResults.swift in Sources */,
-				C1D628892BC3110D00EEB771 /* SearchTitleViewViewController.swift in Sources */,
 				C1D628782BC2734300EEB771 /* DetailView.swift in Sources */,
 				C1D6285F2BC193AA00EEB771 /* BaseViewController.swift in Sources */,
 				C1D628352BC18EEA00EEB771 /* SceneDelegate.swift in Sources */,
