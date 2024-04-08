@@ -43,10 +43,19 @@ class SearchViewModel: ViewModelType {
     
     func search(for searchTerm: String) {
         
-        APIManager.shared.fetchiTunesSearchResults(term: searchTerm)
-            .subscribe(onNext: { [weak self] apps in
-                self?.appList.onNext(apps)
-            })
+//        APIManager.shared.fetchSingleiTunesSearchResults(term: searchTerm)
+//            .subscribe(onNext: { [weak self] apps in
+//                self?.appList.onNext(apps)
+//            })
+//            .disposed(by: disposeBag)
+        
+        APIManager.shared.fetchSingleiTunesSearchResults(term: searchTerm)
+            .catch { error in
+                return Single<[AppInfo]>.never()
+            }
+            .subscribe(with: self) { owner, apps in
+                owner.appList.onNext(apps)
+            }
             .disposed(by: disposeBag)
     }
 }
