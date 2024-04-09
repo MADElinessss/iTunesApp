@@ -40,6 +40,8 @@ class DetailView: BaseView {
         contentView.addSubview(appImageView)
         contentView.addSubview(appDescriptionView)
         
+        scrollView.backgroundColor = .orange
+        
     }
     
     override func configureHierarchy() {

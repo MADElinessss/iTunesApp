@@ -11,7 +11,12 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class SearchViewController: BaseViewController, UISearchResultsUpdating {
+class SearchViewController: BaseViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    
+    enum SearchState {
+        case initial
+        case searched
+    }
     
     let mainView = SearchView()
     let viewModel = SearchViewModel()
@@ -33,7 +38,7 @@ class SearchViewController: BaseViewController, UISearchResultsUpdating {
         }
         
         setupSearchController()
-        
+        // searchController.searchBar.delegate = self
     }
     
     private func configureNavigationBar() {
@@ -60,7 +65,14 @@ class SearchViewController: BaseViewController, UISearchResultsUpdating {
         let output = viewModel.transform(input)
         
         output.apps
-            .bind(to: mainView.tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
+            .do(onNext: { apps in
+                print("검색 결과 데이터: \(apps.count)개")
+            })
+            .bind(to: mainView.searchResultsTableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { [self] (row, element, cell) in
+                
+                self.mainView.searchResultsTableView.isHidden = false
+                self.mainView.recentSearchesTableView.isHidden = true
+                
                 cell.appNameLabel.text = "\(element.trackName)"
                 let url = URL(string: element.artworkUrl100)
                 cell.appIconImageView.kf.setImage(with: url)
@@ -78,12 +90,23 @@ class SearchViewController: BaseViewController, UISearchResultsUpdating {
                 }
             }
             .disposed(by: disposeBag)
-
+        
+        output.searchTerms
+            .do(onNext: { terms in
+                print("최근 검색어 데이터: \(terms)")
+            })
+            .bind(to: mainView.recentSearchesTableView.rx.items) { (tableView, row, element) -> UITableViewCell in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTermCell") ?? UITableViewCell(style: .default, reuseIdentifier: "SearchTermCell")
+                cell.textLabel?.text = element
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
         Observable.zip(
-            mainView.tableView.rx.modelSelected(
+            mainView.searchResultsTableView.rx.modelSelected(
                 AppInfo.self
             ),
-            mainView.tableView.rx.itemSelected
+            mainView.searchResultsTableView.rx.itemSelected
         )
         .map { $0.0 }
         .subscribe(with: self) { owner, app in
@@ -95,14 +118,36 @@ class SearchViewController: BaseViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        // guard let searchText = searchController.searchBar.text, !searchText.isEmpty else { return }
+        //viewModel.search(for: searchText)
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("검색 시작됨")
+        // viewModel.updateSearchState(.searched)
+        if let searchText = searchBar.text, !searchText.isEmpty {
+            viewModel.search(for: searchText)
+        }
         
+        mainView.searchResultsTableView.isHidden = false
+        mainView.recentSearchesTableView.isHidden = true
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("검색 취소됨")
+        viewModel.updateSearchState(.initial)
+        mainView.searchResultsTableView.isHidden = true
+        mainView.recentSearchesTableView.isHidden = false
+    }
     func configure() {
-        mainView.tableView.snp.makeConstraints { make in
+        mainView.searchResultsTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
+
+        mainView.recentSearchesTableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(44)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
